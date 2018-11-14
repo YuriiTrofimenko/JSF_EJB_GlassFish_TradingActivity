@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+        <ui:composition>
+          <h:form>
+              <span>#{msg.search_title}: </span>
+              <h:inputText id="inputSearch" value="#{index_data.searchString}"></h:inputText>
+              <h:commandButton value="Find">
+                <f:param name="search_string" value="" />
+                <f:ajax
+                    event="click"
+                    execute="inputSearch"
+                    onevent="showProgress"
+                    render=":salesList"
+                    listener="#{index_data.getSales()}"
+                />
+              </h:commandButton>
+          </h:form>
+        </ui:composition> 
+    </body>
+</html>
+
